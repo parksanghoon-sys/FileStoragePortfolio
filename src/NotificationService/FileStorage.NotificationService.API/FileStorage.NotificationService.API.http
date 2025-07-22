@@ -1,0 +1,6 @@
+@FileStorage.NotificationService.API_HostAddress = http://localhost:5245
+
+GET {{FileStorage.NotificationService.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

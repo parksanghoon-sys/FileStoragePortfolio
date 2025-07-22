@@ -1,0 +1,90 @@
+version: '3.8'
+
+services:
+  identityservice:
+    build:
+      context: .
+      dockerfile: src/IdentityService/FileStorage.IdentityService.API/Dockerfile
+    ports:
+      - "5001:80"
+    environment:
+      - ConnectionStrings__DefaultConnection=Host=identitydb;Port=5432;Database=identitydb;Username=postgres;Password=password
+      - JwtSettings__Secret=YourSuperSecretKeyThatIsAtLeast32CharactersLong
+      - JwtSettings__Issuer=FileStoragePlatform
+      - JwtSettings__Audience=FileStorageUsers
+      - JwtSettings__AccessTokenExpirationMinutes=60
+      - JwtSettings__RefreshTokenExpirationDays=7
+    depends_on:
+      - identitydb
+
+  fileservice:
+    build:
+      context: .
+      dockerfile: src/FileService/FileStorage.FileService.API/Dockerfile
+    ports:
+      - "5002:80"
+    environment:
+      - ConnectionStrings__DefaultConnection=Host=fileservicedb;Port=5432;Database=fileservicedb;Username=postgres;Password=password
+      - UploadPath=/app/uploads
+      - JwtSettings__Secret=YourSuperSecretKeyThatIsAtLeast32CharactersLong
+      - JwtSettings__Issuer=FileStoragePlatform
+      - JwtSettings__Audience=FileStorageUsers
+    depends_on:
+      - fileservicedb
+
+  notificationservice:
+    build:
+      context: .
+      dockerfile: src/NotificationService/FileStorage.NotificationService.API/Dockerfile
+    ports:
+      - "5003:80"
+    environment:
+      - JwtSettings__Secret=YourSuperSecretKeyThatIsAtLeast32CharactersLong
+      - JwtSettings__Issuer=FileStoragePlatform
+      - JwtSettings__Audience=FileStorageUsers
+    
+  apigateway:
+    build:
+      context: .
+      dockerfile: src/ApiGateway/FileStorage.ApiGateway/Dockerfile
+    ports:
+      - "5000:80"
+    depends_on:
+      - identityservice
+      - fileservice
+      - notificationservice
+
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    ports:
+      - "3000:80"
+    depends_on:
+      - apigateway
+
+  identitydb:
+    image: postgres:13
+    environment:
+      POSTGRES_DB: identitydb
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+    volumes:
+      - identity_db_data:/var/lib/postgresql/data
+    ports:
+      - "5433:5432" # Host port 5433 for identitydb
+
+  fileservicedb:
+    image: postgres:13
+    environment:
+      POSTGRES_DB: fileservicedb
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+    volumes:
+      - fileservice_db_data:/var/lib/postgresql/data
+    ports:
+      - "5434:5432" # Host port 5434 for fileservicedb
+
+volumes:
+  identity_db_data:
+  fileservice_db_data:
