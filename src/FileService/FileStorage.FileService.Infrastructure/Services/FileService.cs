@@ -3,13 +3,8 @@ using FileStorage.FileService.Application.Interfaces;
 using FileStorage.FileService.Domain;
 using FileStorage.Shared;
 using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
-using FileStorage.FileService.Infrastructure.Repositories;
 
 namespace FileStorage.FileService.Infrastructure.Services
 {
@@ -132,6 +127,6 @@ namespace FileStorage.FileService.Infrastructure.Services
         private string GenerateUniqueFileName(string originalFileName)
         {
             return Guid.NewGuid().ToString() + Path.GetExtension(originalFileName);
-        }
+        }    
     }
 }

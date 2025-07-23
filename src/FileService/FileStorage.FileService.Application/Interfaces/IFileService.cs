@@ -1,9 +1,6 @@
 using FileStorage.Shared;
 using FileStorage.FileService.Application.DTOs;
 using Microsoft.AspNetCore.Http;
-using System.IO;
-using System.Threading.Tasks;
-using System.Collections.Generic;
 
 namespace FileStorage.FileService.Application.Interfaces
 {

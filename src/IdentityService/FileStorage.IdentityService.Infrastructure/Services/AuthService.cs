@@ -3,15 +3,9 @@ using FileStorage.IdentityService.Application.Interfaces;
 using FileStorage.IdentityService.Domain;
 using FileStorage.Shared;
 using Microsoft.Extensions.Configuration;
-using System.Threading.Tasks;
 using System.Security.Claims;
-using System.IdentityModel.Tokens.Jwt;
-using Microsoft.IdentityModel.Tokens;
 using System.Text;
-using System;
-using System.Linq;
 using Microsoft.EntityFrameworkCore;
-using FileStorage.IdentityService.Infrastructure.Repositories;
 
 namespace FileStorage.IdentityService.Infrastructure.Services
 {

@@ -1,19 +1,21 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
-  <PropertyGroup>
-    <TargetFramework>net9.0</TargetFramework>
-    <Nullable>enable</Nullable>
-    <ImplicitUsings>enable</ImplicitUsings>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net9.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.6" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.6" />
+		<PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="9.0.3" />
+		<PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="9.0.3" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\FileStorage.IdentityService.Application\FileStorage.IdentityService.Application.csproj" />
-    <ProjectReference Include="..\FileStorage.IdentityService.Infrastructure\FileStorage.IdentityService.Infrastructure.csproj" />
-    <ProjectReference Include="..\..\FileStorage.Shared\FileStorage.Shared.csproj" />
-  </ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\FileStorage.IdentityService.Application\FileStorage.IdentityService.Application.csproj" />
+		<ProjectReference Include="..\FileStorage.IdentityService.Infrastructure\FileStorage.IdentityService.Infrastructure.csproj" />
+		<ProjectReference Include="..\..\FileStorage.Shared\FileStorage.Shared.csproj" />
+	</ItemGroup>
 
 </Project>

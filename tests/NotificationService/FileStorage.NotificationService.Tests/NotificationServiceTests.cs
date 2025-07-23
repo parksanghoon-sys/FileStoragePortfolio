@@ -1,9 +1,6 @@
-using Xunit;
 using Moq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.SignalR;
 using FileStorage.NotificationService.API.Hubs;
-using FileStorage.NotificationService.API.Services;
 
 namespace FileStorage.NotificationService.Tests
 {

@@ -1,21 +1,13 @@
-using Xunit;
 using Moq;
-using System.Threading.Tasks;
-using FileStorage.FileService.Application.Interfaces;
-using FileStorage.FileService.Application.DTOs;
 using FileStorage.FileService.Domain;
-using FileStorage.FileService.Infrastructure.Services;
-using FileStorage.Shared;
 using Microsoft.Extensions.Configuration;
-using System.Collections.Generic;
-using System.Linq;
 using Microsoft.AspNetCore.Http;
-using System.IO;
 using Microsoft.EntityFrameworkCore;
-using FileStorage.FileService.Infrastructure.Repositories;
 using System.Linq.Expressions;
 using System.Reflection;
 using Microsoft.EntityFrameworkCore.Query;
+using FileStorage.Shared;
+using Microsoft.AspNetCore.Http.Internal;
 
 namespace FileStorage.FileService.Tests
 {
@@ -23,7 +15,7 @@ namespace FileStorage.FileService.Tests
     {
         private readonly Mock<IRepository<FileEntity>> _mockFileRepository;
         private readonly Mock<IConfiguration> _mockConfiguration;
-        private readonly FileService _fileService;
+        private readonly FileStorage.FileService.Infrastructure.Services.FileService _fileService;
 
         public FileServiceTests()
         {
@@ -32,7 +24,7 @@ namespace FileStorage.FileService.Tests
 
             _mockConfiguration.Setup(c => c["UploadPath"]).Returns(Path.Combine(Path.GetTempPath(), "uploads_test"));
 
-            _fileService = new FileService(
+            _fileService = new FileStorage.FileService.Infrastructure.Services.FileService(
                 _mockConfiguration.Object,
                 _mockFileRepository.Object
             );
@@ -115,7 +107,7 @@ namespace FileStorage.FileService.Tests
         }
 
         // Helper to mock IQueryable for EF Core
-        private static IQueryable<T> BuildMock<T>(this IQueryable<T> queryable)
+        private IQueryable<T> BuildMock<T>(IQueryable<T> queryable)
         {
             var mock = new Mock<IQueryable<T>>();
             mock.As<IAsyncEnumerable<T>>().Setup(x => x.GetAsyncEnumerator(It.IsAny<CancellationToken>()))

@@ -1,8 +1,6 @@
 using FileStorage.NotificationService.API.Hubs;
 using FileStorage.NotificationService.API.Interfaces;
 using FileStorage.NotificationService.API.Services;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Text;
 

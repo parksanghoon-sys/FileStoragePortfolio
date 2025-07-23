@@ -2,11 +2,6 @@ using FileStorage.FileService.Application.DTOs;
 using FileStorage.FileService.Application.Interfaces;
 using FileStorage.FileService.Domain;
 using FileStorage.Shared;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using FileStorage.FileService.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 namespace FileStorage.FileService.Infrastructure.Services

@@ -1,5 +1,3 @@
-using System;
-
 namespace FileStorage.FileService.Application.DTOs
 {
     public class SharedFileDto

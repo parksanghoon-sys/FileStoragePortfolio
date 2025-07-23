@@ -2,9 +2,7 @@ using FileStorage.FileService.Application.DTOs;
 using FileStorage.FileService.Application.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System.Linq;
 using System.Security.Claims;
-using System.Threading.Tasks;
 
 namespace FileStorage.FileService.API.Controllers
 {

@@ -1,7 +1,6 @@
 using FileStorage.IdentityService.Application.DTOs;
 using FileStorage.IdentityService.Application.Interfaces;
 using Microsoft.AspNetCore.Mvc;
-using System.Threading.Tasks;
 
 namespace FileStorage.IdentityService.API.Controllers
 {

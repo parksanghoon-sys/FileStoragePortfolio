@@ -1,19 +1,13 @@
 using System.Linq.Expressions;
 using System.Reflection;
 using Microsoft.EntityFrameworkCore.Query;
-using Xunit;
 using Moq;
-using System.Threading.Tasks;
-using FileStorage.IdentityService.Application.Interfaces;
 using FileStorage.IdentityService.Application.DTOs;
 using FileStorage.IdentityService.Domain;
 using FileStorage.IdentityService.Infrastructure.Services;
-using FileStorage.Shared;
 using Microsoft.Extensions.Configuration;
-using System.Collections.Generic;
-using System.Linq;
 using Microsoft.EntityFrameworkCore;
-using FileStorage.IdentityService.Infrastructure.Repositories;
+using FileStorage.Shared;
 
 namespace FileStorage.IdentityService.Tests
 {
@@ -85,7 +79,7 @@ namespace FileStorage.IdentityService.Tests
             // Arrange
             var loginRequest = new LoginRequest { Email = "test@example.com", Password = "Password123!" };
             var user = new User { Id = 1, Email = "test@example.com", Username = "testuser", PasswordHash = BCrypt.Net.BCrypt.HashPassword("Password123!"), RefreshTokens = new List<RefreshToken>() };
-            _mockUserRepository.Setup(r => r.GetQueryable()).ReturnsAsync(new List<User> { user }.AsQueryable().BuildMock());
+            _mockUserRepository.Setup(r => r.GetQueryable()).ReturnsAsync(BuildMock(new List<User> { user }.AsQueryable()));
             _mockUserRepository.Setup(r => r.UpdateAsync(It.IsAny<User>())).Returns(Task.CompletedTask);
 
             // Act
@@ -103,7 +97,7 @@ namespace FileStorage.IdentityService.Tests
             // Arrange
             var loginRequest = new LoginRequest { Email = "test@example.com", Password = "WrongPassword" };
             var user = new User { Id = 1, Email = "test@example.com", Username = "testuser", PasswordHash = BCrypt.Net.BCrypt.HashPassword("Password123!") };
-            _mockUserRepository.Setup(r => r.GetQueryable()).ReturnsAsync(new List<User> { user }.AsQueryable().BuildMock());
+            _mockUserRepository.Setup(r => r.GetQueryable()).ReturnsAsync(BuildMock(new List<User> { user }.AsQueryable()));
 
             // Act
             var result = await _authService.LoginAsync(loginRequest);
@@ -118,7 +112,7 @@ namespace FileStorage.IdentityService.Tests
         // For simple LINQ operations, AsQueryable() is often sufficient.
         // For more complex scenarios, consider a dedicated in-memory database or a mocking library for IQueryable.
         // This is a simplified mock for demonstration.
-        private static IQueryable<T> BuildMock<T>(this IQueryable<T> queryable)
+        private IQueryable<T> BuildMock<T>( IQueryable<T> queryable)
         {
             var mock = new Mock<IQueryable<T>>();
             mock.As<IAsyncEnumerable<T>>().Setup(x => x.GetAsyncEnumerator(It.IsAny<CancellationToken>()))

@@ -1,6 +1,4 @@
 using FileStorage.FileService.Application.Interfaces;
-using System;
-using System.Threading.Tasks;
 
 namespace FileStorage.FileService.Infrastructure.Services
 {

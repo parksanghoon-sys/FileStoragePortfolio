@@ -1,6 +1,5 @@
 using FileStorage.Shared;
 using FileStorage.IdentityService.Application.DTOs;
-using System.Threading.Tasks;
 
 namespace FileStorage.IdentityService.Application.Interfaces
 {

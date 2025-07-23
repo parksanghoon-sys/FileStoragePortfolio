@@ -1,5 +1,4 @@
 using FileStorage.Shared;
-using System.Collections.Generic;
 
 namespace FileStorage.IdentityService.Domain
 {
@@ -14,7 +13,7 @@ namespace FileStorage.IdentityService.Domain
 
     public enum UserRole { Admin, User, Guest }
 
-    public class RefreshToken
+    public class RefreshToken : BaseEntity
     {
         public int Id { get; set; }
         public string Token { get; set; }

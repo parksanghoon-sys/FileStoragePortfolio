@@ -1,8 +1,6 @@
 using FileStorage.NotificationService.API.Interfaces;
 using FileStorage.NotificationService.API.Hubs;
 using Microsoft.AspNetCore.SignalR;
-using System;
-using System.Threading.Tasks;
 
 namespace FileStorage.NotificationService.API.Services
 {

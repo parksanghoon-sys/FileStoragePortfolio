@@ -1,9 +1,6 @@
 using FileStorage.Shared;
 using FileStorage.FileService.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace FileStorage.FileService.Infrastructure.Repositories
 {

@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-
 namespace FileStorage.FileService.Application.DTOs
 {
     public class FileUploadResult

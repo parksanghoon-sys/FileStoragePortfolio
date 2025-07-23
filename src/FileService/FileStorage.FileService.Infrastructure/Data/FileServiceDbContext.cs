@@ -1,5 +1,6 @@
 using FileStorage.FileService.Domain;
 using Microsoft.EntityFrameworkCore;
+using FileShare = FileStorage.FileService.Domain.FileShare;
 
 namespace FileStorage.FileService.Infrastructure.Data
 {

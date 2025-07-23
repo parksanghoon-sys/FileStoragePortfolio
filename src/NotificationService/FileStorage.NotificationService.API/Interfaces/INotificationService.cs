@@ -1,5 +1,3 @@
-using System.Threading.Tasks;
-
 namespace FileStorage.NotificationService.API.Interfaces
 {
     public interface INotificationService

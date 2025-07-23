@@ -1,6 +1,3 @@
-using System;
-using System.Collections.Generic;
-
 namespace FileStorage.Shared
 {
     public class PagedResult<T>

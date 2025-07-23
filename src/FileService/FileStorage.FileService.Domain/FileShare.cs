@@ -1,5 +1,4 @@
 using FileStorage.Shared;
-using System;
 
 namespace FileStorage.FileService.Domain
 {
