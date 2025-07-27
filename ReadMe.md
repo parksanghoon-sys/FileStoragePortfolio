@@ -1,4 +1,3 @@
-
 # ☁️ Cloud File Storage Platform
 
 **ASP.NET Core + React 기반의 파일 스토리지 플랫폼**
